@@ -1,45 +1,36 @@
-"use client";
+"use client"
 
-import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react";
-import React from "react";
-import { GiPadlock } from "react-icons/gi";
-import { useForm } from "react-hook-form";
-// import { loginSchema, LoginSchema } from "@/lib/schemas/LoginSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-// import { signInUser } from "@/app/actions/authActions";
-// import { useRouter } from "next/navigation";
-// import { toast } from "react-toastify";
-import Link from "next/link";
-import { loginSchema, LoginSchema } from "@/lib/schemas/LoginSchema";
-// import SocialLogin from "./SocialLogin";
-
-
-
-
-
+import { Button, Card, CardBody, CardHeader, Input } from "@nextui-org/react"
+import React from "react"
+import { GiPadlock } from "react-icons/gi"
+import { useForm } from "react-hook-form"
+import { loginSchema, LoginSchema } from "@/lib/schemas/LoginSchema"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signInUser } from ".././../../app/actions/authActions"
+import { useRouter } from "next/navigation"
+import { toast } from "react-toastify"
+// /Users/rushikeshpatil/Desktop/Connect-me/src/app/actions/authActions.ts
 export default function LoginForm() {
   const {
     register,
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<LoginSchema>({
-
-    resolver: zodResolver(loginSchema)
-  });
-
-  // const router = useRouter();
-
+    resolver: zodResolver(loginSchema),
+    mode: "onTouched",
+  })
+  // const onSubmit = (data: LoginSchema) => console.log(data)
+  const router = useRouter()
   const onSubmit = async (data: LoginSchema) => {
-    console.log("data", data);
-
-    // const result = await signInUser(data);
-    // if (result.status === "success") {
-    //   router.push("/members");
-    //   router.refresh();
-    // } else {
-    //   toast.error(result.error as string);
-    // }
-  };
+    const result = await signInUser(data)
+    console.log("result::: ", result)
+    if (result.status === "success") {
+      router.push("/members")
+      router.refresh()
+    } else {
+      toast.error(result.error as string)
+    }
+  }
 
   return (
     <Card className="w-3/5 mx-auto">
@@ -63,7 +54,6 @@ export default function LoginForm() {
               isInvalid={!!errors.email}
               errorMessage={errors.email?.message as string}
             />
-
             <Input
               defaultValue=""
               label="Password"
@@ -81,13 +71,9 @@ export default function LoginForm() {
             >
               Login
             </Button>
-            {/* <SocialLogin /> */}
-            <div className="flex justify-center hover:underline text-sm">
-              <Link href="/forgot-password">Forgot password?</Link>
-            </div>
           </div>
         </form>
       </CardBody>
     </Card>
-  );
+  )
 }

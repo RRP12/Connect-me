@@ -1,26 +1,15 @@
-import { NextUIProvider } from "@nextui-org/react";
-import React, { ReactNode } from "react";
-import {
-  ToastContainer,
-} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { NextUIProvider } from "@nextui-org/react"
+import React, { ReactNode } from "react"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-export default function Providers({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function Providers({ children }: { children: ReactNode }) {
   return (
     <>
-      <NextUIProvider>{children}</NextUIProvider>
-      {/* <NextUIProvider>
-        <ToastContainer
-          position="bottom-right"
-          hideProgressBar
-        />
+      <NextUIProvider>
+        <ToastContainer position="bottom-right" hideProgressBar />
         {children}
-      </NextUIProvider> */}
-
+      </NextUIProvider>
     </>
-  );
+  )
 }
