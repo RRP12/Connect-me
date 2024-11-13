@@ -5,8 +5,6 @@ import { GiSelfLove } from "react-icons/gi";
 import NavLink from "./NavLink";
 
 export default async function TopNav() {
-  // const session = await auth();
-  // const userInfo = session?.user && (await getUserInfoForNav());
 
   const memberLinks = [
     { href: "/members", label: "Matches" },

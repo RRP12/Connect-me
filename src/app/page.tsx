@@ -1,9 +1,10 @@
-import { Button } from "@nextui-org/react";
 
-export default function Home() {
+
+export default async function Home() {
+
   return (
     <div>
-      <Button color="danger">click me </Button>
+      <h1 className="text-3xl">Hello app!</h1>
     </div>
   );
 }

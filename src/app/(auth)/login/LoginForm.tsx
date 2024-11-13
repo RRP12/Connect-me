@@ -10,16 +10,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // import { useRouter } from "next/navigation";
 // import { toast } from "react-toastify";
 import Link from "next/link";
-import { loginSchema, LoginSchema } from "@/lib/schemas/LoginSchemas";
+import { loginSchema, LoginSchema } from "@/lib/schemas/LoginSchema";
 // import SocialLogin from "./SocialLogin";
 
 
 
-console.log("loginSchema", loginSchema);
-
-
-
-console.log("LoginSchema", LoginSchema);
 
 
 export default function LoginForm() {
